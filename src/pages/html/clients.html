@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    connect-src 'self' http://localhost:4000;
+    font-src 'self';
+    img-src 'self' data:;
+  "
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Clientes - FM Joias</title>
+    <!-- Carregue um CSS global primeiro se tiver estilos para body, etc. -->
+    <link rel="stylesheet" href="../css/global_styles.css" />
+    <!-- NOVO: Para estilos de body e layout principal -->
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <!-- CSS da Navbar -->
+    <link rel="stylesheet" href="../css/clients_style.css" />
+    <!-- CSS específico da página de clientes -->
+  </head>
+  <body>
+    <!-- Container onde a navbar será carregada -->
+    <div id="navbar-container">
+      <!-- A navbar será injetada aqui pelo navbar.js -->
+    </div>
+
+    <!-- Container principal da página -->
+    <div class="main-content-wrapper">
+      <!-- NOVO: Wrapper para aplicar o margin -->
+      <div class="page-container">
+        <!-- Seu container de conteúdo existente -->
+        <header class="page-header">
+          <h1>Lista de Clientes</h1>
+          <div class="header-actions">
+            <input
+              type="text"
+              id="searchClient"
+              placeholder="Buscar cliente por nome ou CPF..."
+            />
+            <button id="addClientBtn" class="btn btn-primary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                />
+              </svg>
+              Adicionar Cliente
+            </button>
+          </div>
+        </header>
+
+        <div class="controls-bar">
+          <div class="limit-selector">
+            <label for="itemsPerPage">Itens por página:</label>
+            <select id="itemsPerPage">
+              <option value="10" selected>10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+          <div class="pagination-info">
+            <span id="pageInfo">Página X de Y (Total: Z itens)</span>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table id="clientsTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Cidade/UF</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th>Data Cadastro</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="clientsTableBody"></tbody>
+          </table>
+        </div>
+        <div
+          id="loadingIndicator"
+          class="loading-indicator"
+          style="display: none"
+        >
+          <div class="spinner"></div>
+          Carregando clientes...
+        </div>
+        <div
+          id="errorMessage"
+          class="error-message"
+          style="display: none"
+        ></div>
+
+        <div class="pagination-controls">
+          <button id="prevPageBtn" class="btn" disabled>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-left-short"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"
+              />
+            </svg>
+            Anterior
+          </button>
+          <button id="nextPageBtn" class="btn" disabled>
+            Próxima
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-right-short"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script/navbar.js"></script>
+    <script src="../script/clients_renderer.js"></script>
+    <!-- Se window-controls.js e logout.js são necessários pela navbar,
+         e não são chamados dentro de navbar.js após carregar o HTML,
+         eles podem precisar ser carregados aqui ou de forma mais global.
+         No entanto, é melhor que navbar.js gerencie a inicialização de
+         funcionalidades da navbar. -->
+  </body>
+</html>

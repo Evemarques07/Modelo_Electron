@@ -1,0 +1,113 @@
+/* ../css/home.css */
+
+.home-content {
+  /* Usando .home-content para especificidade */
+  text-align: center;
+  padding: 50px 40px;
+  background-color: #ffffff;
+  border-radius: 16px; /* Bordas mais arredondadas */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04); /* Sombra mais suave */
+  max-width: 750px; /* Largura máxima para o conteúdo da home */
+  width: 100%; /* Ocupa a largura disponível até o max-width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInScaleUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.welcome-icon {
+  margin-bottom: 25px;
+  color: #007bff; /* Cor primária (ajuste conforme sua identidade visual) */
+  animation: iconBeat 1.5s ease-in-out infinite alternate; /* Animação sutil no ícone */
+}
+
+@keyframes iconBeat {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.home-content h1 {
+  font-size: 2.75em; /* Tamanho de fonte impactante */
+  color: #2c3e50; /* Cor escura e elegante para o título */
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.home-content .subtitle {
+  font-size: 1.15em;
+  color: #5a6872; /* Tom mais suave para o subtítulo */
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 80%; /* Para não ficar muito largo */
+}
+
+.quick-actions {
+  display: flex;
+  gap: 20px; /* Espaço entre os botões */
+  flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+  justify-content: center;
+}
+
+/* Estilos dos botões (podem vir do global_styles.css ou serem definidos aqui) */
+/* Se já tiver .btn, .btn-primary, .btn-secondary em global_styles.css,
+   eles serão aplicados. Caso contrário, defina-os: */
+
+.btn {
+  padding: 12px 25px;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px; /* Para que os botões tenham um tamanho mínimo similar */
+  justify-content: center;
+}
+
+.btn svg {
+  /* Opcional: ajustar tamanho dos SVGs nos botões */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+.btn-secondary:hover {
+  background-color: #545b62;
+  border-color: #545b62;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.2);
+}

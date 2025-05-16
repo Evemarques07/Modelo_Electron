@@ -1,0 +1,31 @@
+/* ../css/global_styles.css */
+:root {
+  --navbar-width: 16%; /* Ou o valor que você estiver usando, ex: 220px */
+  --primary-color: #007bff; /* Exemplo de cor primária */
+  --secondary-color: #6c757d; /* Exemplo de cor secundária */
+  --text-dark: #2c3e50;
+  --text-light: #5a6872;
+  --bg-light: #f4f7f6;
+  --bg-card: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.main-content-wrapper {
+  margin-right: var(--navbar-width); /* Se navbar à direita */
+  /* margin-left: var(--navbar-width);  Se navbar à esquerda */
+  width: calc(100% - var(--navbar-width));
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex; /* Para centralizar seu filho */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 30px; /* Espaçamento nas bordas da área de conteúdo principal */
+  overflow-y: auto; /* Permite scroll se o conteúdo interno for maior */
+}

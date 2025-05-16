@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        connect-src 'self' http://localhost:4000;
+        script-src 'self';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+    "
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - FM Joias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./pages/css/style.css" />
+  </head>
+  <body>
+    <div class="app-window-controls">
+      <button id="minimize-btn" title="Minimizar" aria-label="Minimizar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+          />
+        </svg>
+      </button>
+      <button
+        id="maximize-btn"
+        title="Maximizar / Restaurar"
+        aria-label="Maximizar ou Restaurar"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path
+            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+          />
+        </svg>
+      </button>
+      <button id="close-btn" title="Fechar" aria-label="Fechar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path
+            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="login-wrapper">
+      <div class="login-container">
+        <div class="login-header">
+          <h1>Bem-vindo!</h1>
+        </div>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="nome">Nome Completo</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Seu nome completo"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Sua senha"
+              required
+            />
+          </div>
+          <button type="submit" id="loginBtn">Entrar</button>
+          <p id="erro" class="error-message" style="display: none"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="./pages/script/renderer.js"></script>
+    <script src="./pages/script/window-controls.js"></script>
+  </body>
+</html>

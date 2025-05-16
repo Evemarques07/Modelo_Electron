@@ -1,0 +1,187 @@
+/* Reset básico e fontes */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+  overflow: hidden; /* Para evitar barras de rolagem se a janela for menor que o conteúdo */
+}
+
+/* Controles da Janela (Estilo genérico para a aplicação) */
+.app-window-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000; /* Para ficar sobre outros elementos */
+}
+
+.app-window-controls button {
+  background: transparent;
+  border: none;
+  color: #555; /* Cor mais suave para os ícones */
+  font-size: 16px; /* O tamanho do SVG será controlado por width/height no SVG */
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%; /* Botões redondos */
+  width: 32px; /* Tamanho fixo para o botão */
+  height: 32px; /* Tamanho fixo para o botão */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app-window-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: #111;
+}
+
+.app-window-controls button svg {
+  /* As dimensões já estão no SVG, mas podemos ajustar se necessário */
+}
+
+/* Login Wrapper e Container */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.login-container {
+  background: white;
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.login-header {
+  margin-bottom: 25px;
+}
+
+.logo-icon {
+  color: #007bff; /* Cor primária da marca */
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50; /* Um azul escuro/cinza */
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #7f8c8d; /* Cinza suave */
+  margin-bottom: 25px;
+}
+
+/* Formulário e Inputs */
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #34495e;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #dfe4ea;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #adb5bd;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #007bff; /* Cor primária para foco */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  background-color: #fff;
+}
+
+/* Botão de Login */
+#loginBtn {
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #007bff; /* Cor primária */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 10px; /* Espaço extra antes do botão */
+}
+
+#loginBtn:hover {
+  background-color: #0056b3; /* Tom mais escuro da cor primária */
+}
+
+#loginBtn:active {
+  transform: translateY(1px);
+}
+
+/* Mensagem de Erro */
+.error-message {
+  color: #e74c3c; /* Vermelho para erro */
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 500;
+  min-height: 20px; /* Para evitar pulo de layout quando a msg aparece */
+}
+
+/* Texto do Rodapé */
+.footer-text {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.footer-text a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
