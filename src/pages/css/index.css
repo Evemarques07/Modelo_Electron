@@ -13,9 +13,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Garante que o gradiente cubra a tela toda */
   color: #333;
   overflow: hidden; /* Para evitar barras de rolagem se a janela for menor que o conteúdo */
+  -webkit-font-smoothing: antialiased; /* Melhora renderização de fontes */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Controles da Janela (Estilo genérico para a aplicação) */
@@ -32,7 +34,6 @@ body {
   background: transparent;
   border: none;
   color: #555; /* Cor mais suave para os ícones */
-  font-size: 16px; /* O tamanho do SVG será controlado por width/height no SVG */
   cursor: pointer;
   padding: 5px;
   border-radius: 50%; /* Botões redondos */
@@ -49,10 +50,6 @@ body {
   color: #111;
 }
 
-.app-window-controls button svg {
-  /* As dimensões já estão no SVG, mas podemos ajustar se necessário */
-}
-
 /* Login Wrapper e Container */
 .login-wrapper {
   display: flex;
@@ -66,43 +63,44 @@ body {
   background: white;
   padding: 35px 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07); /* Sombra mais suave */
   width: 100%;
-  max-width: 420px;
+  max-width: 400px; /* Um pouco menor para um visual mais compacto */
   text-align: center;
 }
 
 .login-header {
-  margin-bottom: 25px;
+  margin-bottom: 30px; /* Mais espaço */
 }
 
-.logo-icon {
-  color: #007bff; /* Cor primária da marca */
-  margin-bottom: 10px;
+.logo-image { /* Estilo para o logo opcional */
+  width: 80px; /* Ajuste conforme necessário */
+  margin-bottom: 15px;
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 26px; /* Ligeiramente menor */
   font-weight: 600;
   color: #2c3e50; /* Um azul escuro/cinza */
-  margin-bottom: 5px;
+  margin-bottom: 8px; /* Espaço para o subtítulo */
 }
 
 .subtitle {
   font-size: 15px;
   color: #7f8c8d; /* Cinza suave */
-  margin-bottom: 25px;
+  margin-bottom: 0; /* O header já tem margin-bottom */
 }
 
 /* Formulário e Inputs */
 #loginForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px; /* Espaçamento entre os grupos de input */
 }
 
 .input-group {
   text-align: left;
+  position: relative; /* Para o wrapper da senha */
 }
 
 .input-group label {
@@ -110,26 +108,35 @@ h1 {
   font-size: 14px;
   font-weight: 500;
   color: #34495e;
-  margin-bottom: 6px;
+  margin-bottom: 8px; /* Mais espaço */
 }
 
+input[type="email"], /* Aplicar a inputs de email também */
 input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 12px 15px;
-  font-size: 16px;
+  font-size: 15px; /* Ligeiramente menor */
   border: 1px solid #dfe4ea;
   border-radius: 8px;
   background-color: #f8f9fa;
   color: #333;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+/* Padding à direita para inputs de senha para não sobrepor o botão do olho */
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] { /* Quando o tipo é alterado para text */
+  padding-right: 45px;
+}
 
+
+input[type="email"]::placeholder,
 input[type="text"]::placeholder,
 input[type="password"]::placeholder {
   color: #adb5bd;
 }
 
+input[type="email"]:focus,
 input[type="text"]:focus,
 input[type="password"]:focus {
   outline: none;
@@ -138,26 +145,107 @@ input[type="password"]:focus {
   background-color: #fff;
 }
 
+/* Password wrapper e botão de toggle */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 1px; /* Ajuste fino para alinhar dentro da borda do input */
+  top: 1px;   /* Ajuste fino */
+  bottom: 1px;/* Ajuste fino */
+  background: transparent;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7f8c8d;
+  border-radius: 0 8px 8px 0; /* Arredonda o canto direito */
+  outline: none;
+}
+
+.toggle-password-btn:hover {
+  color: #333;
+}
+.toggle-password-btn:focus-visible { /* Para acessibilidade do teclado */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.toggle-password-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.toggle-password-btn[disabled] {
+    cursor: default;
+    opacity: 0.5;
+}
+
+
+/* Grupo de Opções (Lembrar-me, Esqueci senha) */
+.options-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-top: -5px; /* Reduz um pouco o gap padrão do form */
+  margin-bottom: 5px; /* Adiciona espaço antes do botão Entrar */
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  color: #555;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #007bff; /* Estiliza o checkbox moderno */
+  width: 16px; /* Tamanho do checkbox */
+  height: 16px;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+
 /* Botão de Login */
 #loginBtn {
-  padding: 14px;
+  padding: 13px; /* Ligeiramente menor */
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500; /* Um pouco menos bold */
   color: white;
   background-color: #007bff; /* Cor primária */
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
-  margin-top: 10px; /* Espaço extra antes do botão */
+  /* margin-top: 10px; Removido, o gap do form e margin-bottom do options-group cuidam disso */
 }
 
 #loginBtn:hover {
-  background-color: #0056b3; /* Tom mais escuro da cor primária */
+  background-color: #0069d9; /* Tom mais escuro da cor primária */
+}
+#loginBtn:focus-visible { /* Para acessibilidade do teclado */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 #loginBtn:active {
   transform: translateY(1px);
+  background-color: #005cbf;
 }
 
 /* Mensagem de Erro */
@@ -167,9 +255,10 @@ input[type="password"]:focus {
   margin-top: 10px;
   font-weight: 500;
   min-height: 20px; /* Para evitar pulo de layout quando a msg aparece */
+  text-align: center;
 }
 
-/* Texto do Rodapé */
+/* Texto do Rodapé (Opcional) */
 .footer-text {
   margin-top: 25px;
   font-size: 14px;

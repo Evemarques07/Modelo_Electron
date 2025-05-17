@@ -25,83 +25,59 @@
   <body>
     <div class="app-window-controls">
       <button id="minimize-btn" title="Minimizar" aria-label="Minimizar">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          viewBox="0 0 16 16"
-          aria-hidden="true"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-          />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" > <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z" /> </svg>
       </button>
-      <button
-        id="maximize-btn"
-        title="Maximizar / Restaurar"
-        aria-label="Maximizar ou Restaurar"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          fill="currentColor"
-          viewBox="0 0 16 16"
-          aria-hidden="true"
-        >
-          <path
-            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
-          />
-        </svg>
+      <button id="maximize-btn" title="Maximizar / Restaurar" aria-label="Maximizar ou Restaurar" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" > <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" /> </svg>
       </button>
       <button id="close-btn" title="Fechar" aria-label="Fechar">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          viewBox="0 0 16 16"
-          aria-hidden="true"
-        >
-          <path
-            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-          />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" > <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" /> </svg>
       </button>
     </div>
 
     <div class="login-wrapper">
       <div class="login-container">
         <div class="login-header">
+          <!-- Opcional: Adicionar um logo aqui se desejar -->
+          <!-- <img src="path/to/your/logo.svg" alt="FM Joias Logo" class="logo-image"> -->
           <h1>Bem-vindo!</h1>
+          <p class="subtitle">Faça login para continuar</p>
         </div>
         <form id="loginForm">
           <div class="input-group">
-            <label for="nome">Nome Completo</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              placeholder="Seu nome completo"
-              required
-            />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required />
           </div>
+
           <div class="input-group">
             <label for="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              name="senha"
-              placeholder="Sua senha"
-              required
-            />
+            <div class="password-wrapper">
+              <input type="password" id="senha" name="senha" placeholder="Sua senha" required />
+              <button type="button" id="togglePassword" class="toggle-password-btn" aria-label="Mostrar senha">
+                <!-- Ícone de olho aberto (SVG) -->
+                <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <!-- Ícone de olho fechado (SVG) - inicialmente escondido -->
+                <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+              </button>
+            </div>
           </div>
+
+          <div class="options-group">
+            <label class="remember-me">
+              <input type="checkbox" id="rememberMe" name="rememberMe" />
+              Lembrar-me
+            </label>
+            <!-- Se você tiver uma funcionalidade de "Esqueci minha senha" -->
+            <!-- <a href="#" class="forgot-password">Esqueceu a senha?</a> -->
+          </div>
+
           <button type="submit" id="loginBtn">Entrar</button>
-          <p id="erro" class="error-message" style="display: none"></p>
+          <p id="erro" class="error-message" style="display: none;"></p>
         </form>
+        <!-- Opcional: Links para registro ou outras ações -->
+        <!-- <div class="footer-text">
+          Não tem uma conta? <a href="#">Registre-se</a>
+        </div> -->
       </div>
     </div>
 
