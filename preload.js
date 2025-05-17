@@ -5,13 +5,38 @@ const API_BASE_URL =
   "http://localhost:4000";
 
 contextBridge.exposeInMainWorld("api", {
-  loginAdmin: async (dados) => {
-    const response = await fetch(`${API_BASE_URL}/users/login-admin`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dados),
-    });
-    return response.json();
+  loginUsuario: async (email, senha) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/usuarios/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, senha })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        return {
+          sucesso: false,
+          mensagem: errorData?.error || 'Erro ao fazer login'
+        };
+      }
+
+      const data = await response.json();
+      return {
+        sucesso: true,
+        token: data.token,
+        usuario: data.usuario
+      };
+
+    } catch (error) {
+      console.error('Erro na requisição de login:', error);
+      return {
+        sucesso: false,
+        mensagem: 'Erro de rede ou servidor indisponível'
+      };
+    }
   },
   listClients: async (page = 1, limit = 10) => {
     const response = await fetch(
